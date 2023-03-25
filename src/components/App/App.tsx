@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Step } from "../../const";
+import { Screen } from "../../const";
 import useAppSelector from "../../hooks/useAppSelector";
-import { getStep } from "../../store/reducers/step/selectors";
+import { getScreen } from "../../store/reducers/screen/selectors";
 import Locations from "../Locations/Locations";
 import Navigation from "../Navigation/Navigation";
 import Map from "../Map/Map";
@@ -10,20 +10,20 @@ import { useActions } from "../../hooks/useActions";
 import Message from "../Common/Message/Message";
 
 function App() {
-  const step = useAppSelector(getStep);
-  const { fetchIp, setStep } = useActions();
+  const screen = useAppSelector(getScreen);
+  const { fetchIp, setScreen } = useActions();
 
-  const handleCloseBtnClick = () => setStep(Step.Main);
+  const handleCloseBtnClick = () => setScreen(Screen.Main);
 
   const showApp = () => {
-    switch (step) {
-      case Step.Main:
+    switch (screen) {
+      case Screen.Main:
         return <Navigation />;
-      case Step.Map:
+      case Screen.Map:
         return <Map />;
-      case Step.Locations:
+      case Screen.Locations:
         return <Locations />;
-      case Step.Error:
+      case Screen.Error:
         return (
           <Message
             title="Error"

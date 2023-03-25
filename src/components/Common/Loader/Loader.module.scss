@@ -1,22 +1,22 @@
 .ldsRoller {
-  display: inline-block;
   position: relative;
+  display: inline-block;
   width: 80px;
   height: 80px;
 }
 .ldsRoller div {
-  animation: ldsRoller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   transform-origin: 40px 40px;
+  animation: ldsRoller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 }
 .ldsRoller div:after {
-  content: " ";
-  display: block;
   position: absolute;
+  display: block;
   width: 7px;
   height: 7px;
-  border-radius: 50%;
-  background: lightgray;
   margin: -4px 0 0 -4px;
+  background: lightgray;
+  border-radius: 50%;
+  content: " ";
 }
 .ldsRoller div:nth-child(1) {
   animation-delay: -0.036s;

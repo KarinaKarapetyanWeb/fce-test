@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { NameSpace, Step } from "../../../const";
+import { createSlice } from "@reduxjs/toolkit";
+import { NameSpace } from "../../../const";
 import { fetchIp } from "./action";
 import { IUserState } from "./types";
 

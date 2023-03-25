@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import cn from "classnames";
-import { Step } from "../../../const";
+import { Screen } from "../../../const";
 import { useActions } from "../../../hooks/useActions";
 import { closeIcon } from "./icons";
 import styles from "./BackButton.module.scss";
@@ -18,9 +18,9 @@ const BackButton: React.FunctionComponent<BackButtonProps> = ({
   className,
   ...props
 }) => {
-  const { setStep } = useActions();
+  const { setScreen } = useActions();
 
-  const handleBackBtnClick = () => setStep(Step.Main);
+  const handleBackBtnClick = () => setScreen(Screen.Main);
 
   return (
     <button

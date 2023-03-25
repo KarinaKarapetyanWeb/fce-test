@@ -1,14 +1,15 @@
 import { NameSpace } from "../../../const";
+import { ILocation } from "../../../types/locations";
 import { State } from "../../../types/state";
 
-export const getLocations = (state: State): any[] =>
+export const getLocations = (state: State): ILocation[] =>
   state[NameSpace.Locations].locations.list;
 export const getLocationsLoading = (state: State): boolean =>
   state[NameSpace.Locations].locations.isLoading;
 export const getLocationsError = (state: State): boolean =>
   state[NameSpace.Locations].locations.isError;
 
-export const getLocationsByIp = (state: State): any[] =>
+export const getLocationsByIp = (state: State): ILocation[] =>
   state[NameSpace.Locations].locationsByIp.list;
 export const getLocationsByIpLoading = (state: State): boolean =>
   state[NameSpace.Locations].locationsByIp.isLoading;

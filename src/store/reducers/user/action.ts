@@ -2,7 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios, { AxiosInstance } from "axios";
 import { IP_URL } from "../../../const";
 import { AppDispatch, State } from "../../../types/state";
-import { IIp } from "./types";
 
 export const fetchIp = createAsyncThunk<
   string,

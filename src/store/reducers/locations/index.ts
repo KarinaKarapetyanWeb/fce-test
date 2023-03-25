@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { NameSpace, Step } from "../../../const";
+import { createSlice } from "@reduxjs/toolkit";
+import { NameSpace } from "../../../const";
 import { getLocationsWithCoords } from "../../../utils/location";
 import {
   fetchLocationsList,
@@ -26,7 +26,7 @@ const initialState: ILocationsState = {
 };
 
 const reducer = createSlice({
-  name: NameSpace.Step,
+  name: NameSpace.Locations,
   initialState,
   reducers: {},
   extraReducers(builder) {

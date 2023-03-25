@@ -57,7 +57,7 @@ const Map: React.FunctionComponent<MapProps> = () => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <UserMarker setCoordinates={setCoordinates} />
-            {!locationsLoading && locations.length !== 0 && <LocationMarkers />}
+            {locations.length !== 0 && <LocationMarkers />}
             <ZoomControl position="bottomright" />
           </MapContainer>
         )}

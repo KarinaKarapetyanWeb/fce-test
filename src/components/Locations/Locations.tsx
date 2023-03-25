@@ -27,46 +27,47 @@ const Locations: React.FunctionComponent<LocationsProps> = () => {
     }
   }, []);
 
+  const isNoData =
+    !locationsByIpLoading && !locationsByIpError && locationsByIp.length === 0;
+
+  const isData =
+    !locationsByIpLoading && !locationsByIpError && locationsByIp.length !== 0;
+
   return (
     <section className={styles.locations}>
       <h2 className={styles.title}>List of locations</h2>
-
       {locationsByIpLoading && (
         <div className={styles.loaderWrapper}>
           <Loader />
         </div>
       )}
-      {!locationsByIpLoading &&
-        !locationsByIpError &&
-        locationsByIp.length === 0 && (
-          <p className={styles.text}>
-            No locations available, please add your first marker to the map.
-          </p>
-        )}
-      {!locationsByIpLoading &&
-        !locationsByIpError &&
-        locationsByIp.length !== 0 && (
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Ip</th>
-                  <th>Coord_x</th>
-                  <th>Coord_y</th>
+      {isNoData && (
+        <p className={styles.text}>
+          No locations available, please add your first marker to the map.
+        </p>
+      )}
+      {isData && (
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Ip</th>
+                <th>Coord_x</th>
+                <th>Coord_y</th>
+              </tr>
+            </thead>
+            <tbody>
+              {locationsByIp.map((location: ILocation) => (
+                <tr key={location.id}>
+                  <td>{location.ip}</td>
+                  <td>{location.coord_x}</td>
+                  <td>{location.coord_y}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {locationsByIp.map((location: ILocation) => (
-                  <tr key={location.id}>
-                    <td>{location.ip}</td>
-                    <td>{location.coord_x}</td>
-                    <td>{location.coord_y}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
       <BackButton className={styles.backBtn} />
     </section>
   );

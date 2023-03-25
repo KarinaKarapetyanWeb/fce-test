@@ -1,10 +1,10 @@
 export enum NameSpace {
-  Step = "STEP",
+  Screen = "SCREEN",
   User = "USER",
   Locations = "LOCATIONS",
 }
 
-export enum Step {
+export enum Screen {
   Main = "Main",
   Map = "Map",
   Locations = "Locations",

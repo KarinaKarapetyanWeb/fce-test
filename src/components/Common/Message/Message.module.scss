@@ -12,24 +12,24 @@
 }
 
 .message {
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
   width: calc(100% - 30px);
   max-width: 600px;
   padding: 24px;
   background-color: var(--white);
-  box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.08);
   border-radius: 12px;
+  box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.08);
 }
 
 .title {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
   margin: 0;
   margin-bottom: 24px;
   padding-right: 40px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
 }
 
 .text {

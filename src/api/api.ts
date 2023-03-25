@@ -1,8 +1,7 @@
-import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
-import { StatusCodes } from "http-status-codes";
-import { BACKEND_URL, REQUEST_TIMEOUT, Step } from "../const";
+import axios, { AxiosError, AxiosInstance } from "axios";
+import { BACKEND_URL, REQUEST_TIMEOUT, Screen } from "../const";
 import { store } from "../store";
-import { setStep } from "../store/reducers/step";
+import { setScreen } from "../store/reducers/screen";
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({
@@ -14,7 +13,7 @@ export const createAPI = (): AxiosInstance => {
     (response) => response,
     (error: AxiosError<{ error: string }>) => {
       if (error.response) {
-        store.dispatch(setStep(Step.Error));
+        store.dispatch(setScreen(Screen.Error));
       }
 
       throw error;
