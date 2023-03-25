@@ -23,4 +23,6 @@ export const REQUEST_TIMEOUT = 5000;
 
 export const LONDON_CITY_CENTER = { lat: 51.505, lng: -0.09 };
 
+export const DEFAULT_ZOOM_LEVEL = 13;
+
 export const BACKEND_URL = "https://dev-sso.transparenterra.com/api";

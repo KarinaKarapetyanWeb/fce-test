@@ -15,7 +15,7 @@ import Loader from "../Common/Loader/Loader";
 import { ICoordinates } from "../../types/locations";
 import UserMarker from "../UserMarker/UserMarker";
 import LocationMarkers from "../LocationMarkers/LocationMarkers";
-import { LONDON_CITY_CENTER } from "../../const";
+import { DEFAULT_ZOOM_LEVEL, LONDON_CITY_CENTER } from "../../const";
 
 interface MapProps {}
 
@@ -48,7 +48,7 @@ const Map: React.FunctionComponent<MapProps> = () => {
           <MapContainer
             className={styles.leafletMap}
             center={LONDON_CITY_CENTER}
-            zoom={13}
+            zoom={DEFAULT_ZOOM_LEVEL}
             scrollWheelZoom={false}
             zoomControl={false}
           >

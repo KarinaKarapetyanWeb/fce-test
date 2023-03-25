@@ -15,6 +15,7 @@ const UserMarker: React.FunctionComponent<UserMarkerProps> = ({
 
   const map = useMapEvents({
     click(evt: LeafletMouseEvent) {
+      console.log(evt);
       setPosition(evt.latlng);
       setCoordinates(evt.containerPoint);
     },
