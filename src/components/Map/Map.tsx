@@ -14,7 +14,7 @@ import { getIp } from "../../store/reducers/user/selectors";
 import Loader from "../Common/Loader/Loader";
 import { ICoordinates } from "../../types/locations";
 import UserMarker from "../UserMarker/UserMarker";
-import LocationMarker from "../LocationMarker/LocationMarker";
+import LocationMarkers from "../LocationMarkers/LocationMarkers";
 import { LONDON_CITY_CENTER } from "../../const";
 
 interface MapProps {}
@@ -57,8 +57,7 @@ const Map: React.FunctionComponent<MapProps> = () => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <UserMarker setCoordinates={setCoordinates} />
-
-            {!locationsLoading && locations.length !== 0 && <LocationMarker />}
+            {!locationsLoading && locations.length !== 0 && <LocationMarkers />}
             <ZoomControl position="bottomright" />
           </MapContainer>
         )}

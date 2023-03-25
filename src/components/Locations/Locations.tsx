@@ -3,6 +3,7 @@ import { useActions } from "../../hooks/useActions";
 import useAppSelector from "../../hooks/useAppSelector";
 import {
   getLocationsByIp,
+  getLocationsByIpError,
   getLocationsByIpLoading,
 } from "../../store/reducers/locations/selectors";
 import { getIp } from "../../store/reducers/user/selectors";
@@ -17,6 +18,7 @@ const Locations: React.FunctionComponent<LocationsProps> = () => {
   const { fetchLocationsListByIp } = useActions();
   const ip = useAppSelector(getIp);
   const locationsByIp = useAppSelector(getLocationsByIp);
+  const locationsByIpError = useAppSelector(getLocationsByIpError);
   const locationsByIpLoading = useAppSelector(getLocationsByIpLoading);
 
   useEffect(() => {
@@ -34,33 +36,37 @@ const Locations: React.FunctionComponent<LocationsProps> = () => {
           <Loader />
         </div>
       )}
-      {!locationsByIpLoading && locationsByIp.length === 0 && (
-        <p className={styles.text}>
-          No locations available, please add your first marker to the map.
-        </p>
-      )}
-      {!locationsByIpLoading && locationsByIp.length !== 0 && (
-        <div className={styles.tableWrap}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Ip</th>
-                <th>Coord_x</th>
-                <th>Coord_y</th>
-              </tr>
-            </thead>
-            <tbody>
-              {locationsByIp.map((location: ILocation) => (
-                <tr key={location.id}>
-                  <td>{location.ip}</td>
-                  <td>{location.coord_x}</td>
-                  <td>{location.coord_y}</td>
+      {!locationsByIpLoading &&
+        !locationsByIpError &&
+        locationsByIp.length === 0 && (
+          <p className={styles.text}>
+            No locations available, please add your first marker to the map.
+          </p>
+        )}
+      {!locationsByIpLoading &&
+        !locationsByIpError &&
+        locationsByIp.length !== 0 && (
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Ip</th>
+                  <th>Coord_x</th>
+                  <th>Coord_y</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {locationsByIp.map((location: ILocation) => (
+                  <tr key={location.id}>
+                    <td>{location.ip}</td>
+                    <td>{location.coord_x}</td>
+                    <td>{location.coord_y}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       <BackButton className={styles.backBtn} />
     </section>
   );

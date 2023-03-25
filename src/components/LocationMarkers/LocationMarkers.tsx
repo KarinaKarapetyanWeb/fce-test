@@ -6,9 +6,9 @@ import { getLocations } from "../../store/reducers/locations/selectors";
 import { ILocation } from "../../types/locations";
 import { icon } from "./icons";
 
-interface LocationMarkerProps {}
+interface LocationMarkersProps {}
 
-const LocationMarker: React.FunctionComponent<LocationMarkerProps> = () => {
+const LocationMarkers: React.FunctionComponent<LocationMarkersProps> = () => {
   const locations = useAppSelector(getLocations);
 
   const map = useMap();
@@ -37,4 +37,4 @@ const LocationMarker: React.FunctionComponent<LocationMarkerProps> = () => {
   );
 };
 
-export default React.memo(LocationMarker);
+export default React.memo(LocationMarkers);
