@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
-import { ApiRoute } from "../../../const";
+import { ApiRoute, Screen } from "../../../const";
 import { ILocation } from "../../../types/locations";
 import { AppDispatch, State } from "../../../types/state";
+import { setScreen } from "../screen";
 import { ILocationParams, ILocationResponse } from "./types";
 
 export const fetchLocationsList = createAsyncThunk<
@@ -37,7 +38,7 @@ export const fetchLocationsListByIp = createAsyncThunk<
 });
 
 export const saveLocation = createAsyncThunk<
-  ILocation[],
+  undefined,
   ILocationParams,
   {
     dispatch: AppDispatch;
@@ -45,13 +46,11 @@ export const saveLocation = createAsyncThunk<
     extra: AxiosInstance;
   }
 >("locations/saveLocation", async (params, { dispatch, extra: api }) => {
-  await api.post(`${ApiRoute.SaveLocation}`, {
+  const data = await api.post(`${ApiRoute.SaveLocation}`, {
     ...params,
   });
 
-  const { data: newData } = await api.get<ILocationResponse>(
-    ApiRoute.LocationList
-  );
+  dispatch(setScreen(Screen.Success));
 
-  return newData.data;
+  return data.data;
 });

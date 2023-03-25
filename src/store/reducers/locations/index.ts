@@ -61,8 +61,7 @@ const reducer = createSlice({
         state.location.isLoading = true;
         state.location.isError = false;
       })
-      .addCase(saveLocation.fulfilled, (state, action) => {
-        state.locations.list = getLocationsWithCoords(action.payload);
+      .addCase(saveLocation.fulfilled, (state) => {
         state.location.isLoading = false;
       })
       .addCase(saveLocation.rejected, (state) => {

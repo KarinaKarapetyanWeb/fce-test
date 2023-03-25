@@ -9,6 +9,7 @@ export enum Screen {
   Map = "Map",
   Locations = "Locations",
   Error = "Error",
+  Success = "Success",
 }
 
 export enum ApiRoute {

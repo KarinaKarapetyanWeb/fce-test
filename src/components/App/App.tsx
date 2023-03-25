@@ -13,7 +13,7 @@ function App() {
   const screen = useAppSelector(getScreen);
   const { fetchIp, setScreen } = useActions();
 
-  const handleCloseBtnClick = () => setScreen(Screen.Main);
+  const handleOkBtnClick = () => setScreen(Screen.Main);
 
   const showApp = () => {
     switch (screen) {
@@ -28,7 +28,15 @@ function App() {
           <Message
             title="Error"
             text="Something went wrong try again"
-            onClose={handleCloseBtnClick}
+            onBtnClick={handleOkBtnClick}
+          />
+        );
+      case Screen.Success:
+        return (
+          <Message
+            title="Success"
+            text="Location have been saved!"
+            onBtnClick={handleOkBtnClick}
           />
         );
       default:
