@@ -1,4 +1,4 @@
-import { Icon, latLng, PointExpression } from "leaflet";
+import { Icon } from "leaflet";
 import React from "react";
 import { Marker, useMap } from "react-leaflet";
 import { IStringCoordinates } from "../../types/locations";
