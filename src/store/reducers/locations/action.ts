@@ -33,12 +33,11 @@ export const fetchLocationsListByIp = createAsyncThunk<
       ip,
     }
   );
-  console.log(data);
   return data.data;
 });
 
 export const saveLocation = createAsyncThunk<
-  undefined,
+  ILocation[],
   ILocationParams,
   {
     dispatch: AppDispatch;
@@ -46,8 +45,13 @@ export const saveLocation = createAsyncThunk<
     extra: AxiosInstance;
   }
 >("locations/saveLocation", async (params, { dispatch, extra: api }) => {
-  const { data } = await api.post(`${ApiRoute.SaveLocation}`, {
+  await api.post(`${ApiRoute.SaveLocation}`, {
     ...params,
   });
-  return data.data;
+
+  const { data: newData } = await api.get<ILocationResponse>(
+    ApiRoute.LocationList
+  );
+
+  return newData.data;
 });

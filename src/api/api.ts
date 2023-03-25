@@ -4,14 +4,6 @@ import { BACKEND_URL, REQUEST_TIMEOUT, Step } from "../const";
 import { store } from "../store";
 import { setStep } from "../store/reducers/step";
 
-const StatusCodeMapping: Record<number, boolean> = {
-  [StatusCodes.BAD_REQUEST]: true,
-  [StatusCodes.NOT_FOUND]: true,
-};
-
-const shouldDisplayError = (response: AxiosResponse) =>
-  !!StatusCodeMapping[response.status];
-
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({
     baseURL: BACKEND_URL,
@@ -21,7 +13,7 @@ export const createAPI = (): AxiosInstance => {
   api.interceptors.response.use(
     (response) => response,
     (error: AxiosError<{ error: string }>) => {
-      if (error.response && shouldDisplayError(error.response)) {
+      if (error.response) {
         store.dispatch(setStep(Step.Error));
       }
 

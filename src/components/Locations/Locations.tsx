@@ -36,29 +36,30 @@ const Locations: React.FunctionComponent<LocationsProps> = () => {
       )}
       {!locationsByIpLoading && locationsByIp.length === 0 && (
         <p className={styles.text}>
-          No locations available, please add your first marker to the map!
+          No locations available, please add your first marker to the map.
         </p>
       )}
-
       {!locationsByIpLoading && locationsByIp.length !== 0 && (
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Ip</th>
-              <th>Coord_x</th>
-              <th>Coord_y</th>
-            </tr>
-          </thead>
-          <tbody>
-            {locationsByIp.map((location: ILocation) => (
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
               <tr>
-                <td>{location.ip}</td>
-                <td>{location.coord_x}</td>
-                <td>{location.coord_y}</td>
+                <th>Ip</th>
+                <th>Coord_x</th>
+                <th>Coord_y</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {locationsByIp.map((location: ILocation) => (
+                <tr key={location.id}>
+                  <td>{location.ip}</td>
+                  <td>{location.coord_x}</td>
+                  <td>{location.coord_y}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
       <BackButton className={styles.backBtn} />
     </section>

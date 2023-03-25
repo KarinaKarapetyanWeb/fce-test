@@ -1,16 +1,16 @@
 import { Icon } from "leaflet";
 import React from "react";
 import { Marker, useMap } from "react-leaflet";
-import { IStringCoordinates } from "../../types/locations";
+import useAppSelector from "../../hooks/useAppSelector";
+import { getLocations } from "../../store/reducers/locations/selectors";
+import { ILocation } from "../../types/locations";
 import { icon } from "./icons";
 
-interface LocationMarkerProps {
-  coordinates: IStringCoordinates;
-}
+interface LocationMarkerProps {}
 
-const LocationMarker: React.FunctionComponent<LocationMarkerProps> = ({
-  coordinates,
-}) => {
+const LocationMarker: React.FunctionComponent<LocationMarkerProps> = () => {
+  const locations = useAppSelector(getLocations);
+
   const map = useMap();
 
   const defaultCustomIcon = new Icon({
@@ -20,14 +20,21 @@ const LocationMarker: React.FunctionComponent<LocationMarkerProps> = ({
   });
 
   return (
-    <Marker
-      position={map.layerPointToLatLng([
-        Number(coordinates.x),
-        Number(coordinates.y),
-      ])}
-      icon={defaultCustomIcon}
-    />
+    <>
+      {locations.map((item: ILocation) => {
+        return (
+          <Marker
+            key={item.id}
+            position={map.layerPointToLatLng([
+              Number(item.coord_x),
+              Number(item.coord_y),
+            ])}
+            icon={defaultCustomIcon}
+          />
+        );
+      })}
+    </>
   );
 };
 
-export default LocationMarker;
+export default React.memo(LocationMarker);

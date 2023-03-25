@@ -12,9 +12,10 @@ import {
 } from "../../store/reducers/locations/selectors";
 import { getIp } from "../../store/reducers/user/selectors";
 import Loader from "../Common/Loader/Loader";
-import { ICoordinates, ILocation } from "../../types/locations";
+import { ICoordinates } from "../../types/locations";
 import UserMarker from "../UserMarker/UserMarker";
 import LocationMarker from "../LocationMarker/LocationMarker";
+import { LONDON_CITY_CENTER } from "../../const";
 
 interface MapProps {}
 
@@ -46,7 +47,7 @@ const Map: React.FunctionComponent<MapProps> = () => {
         {!locationsLoading && (
           <MapContainer
             className={styles.leafletMap}
-            center={{ lat: 51.505, lng: -0.09 }}
+            center={LONDON_CITY_CENTER}
             zoom={13}
             scrollWheelZoom={false}
             zoomControl={false}
@@ -57,19 +58,7 @@ const Map: React.FunctionComponent<MapProps> = () => {
             />
             <UserMarker setCoordinates={setCoordinates} />
 
-            {!locationsLoading &&
-              locations.length !== 0 &&
-              locations.map((item: ILocation) => {
-                return (
-                  <LocationMarker
-                    key={item.id}
-                    coordinates={{
-                      x: item.coord_x,
-                      y: item.coord_y,
-                    }}
-                  />
-                );
-              })}
+            {!locationsLoading && locations.length !== 0 && <LocationMarker />}
             <ZoomControl position="bottomright" />
           </MapContainer>
         )}

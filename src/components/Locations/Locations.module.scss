@@ -34,6 +34,12 @@
   margin: 0;
 }
 
+.tableWrap {
+  max-height: 500px;
+  overflow-y: auto;
+  position: relative;
+}
+
 .table {
   width: 100%;
   border: none;
