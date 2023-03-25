@@ -25,7 +25,7 @@ const LocationMarkers: React.FunctionComponent<LocationMarkersProps> = () => {
         return (
           <Marker
             key={item.id}
-            position={map.layerPointToLatLng([
+            position={map.containerPointToLatLng([
               Number(item.coord_x),
               Number(item.coord_y),
             ])}
