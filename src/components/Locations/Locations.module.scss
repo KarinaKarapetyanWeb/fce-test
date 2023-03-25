@@ -1,0 +1,52 @@
+.locations {
+  position: relative;
+  width: calc(100% - 30px);
+  max-width: 600px;
+  padding: 24px;
+  background: #ffffff;
+  box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0;
+  margin-bottom: 24px;
+  padding-right: 40px;
+}
+
+.backBtn {
+  position: absolute;
+  top: 29px;
+  right: 29px;
+}
+
+.loaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.text {
+  margin: 0;
+}
+
+.table {
+  width: 100%;
+  border: none;
+  text-align: left;
+
+  & th {
+    padding: 8px 0;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  & td {
+    padding: 3px 0;
+  }
+}

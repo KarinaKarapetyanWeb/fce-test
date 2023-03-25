@@ -1,0 +1,98 @@
+@import "~leaflet/dist/leaflet.css";
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./../fonts/Montserrat-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./../fonts/Montserrat-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./../fonts/Montserrat-Bold.woff2") format("woff2");
+}
+
+:root {
+  --white: #ffffff;
+  --main-text-color: #212121;
+  --primary: #18397a;
+  --primary-hover: #091490;
+  --primary-shadow: #acb0d4;
+  --main-bg: #f4f4f4;
+}
+
+html,
+#root {
+  height: 100%;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--main-text-color);
+  background-color: var(--main-bg);
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+// leaflet override control styles
+
+.leaflet-control-zoom {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid #efefef !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(10px) !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  width: 38px !important;
+  height: 38px !important;
+  line-height: 35px !important;
+  border-bottom: none !important;
+
+  & span {
+    opacity: 0.5;
+  }
+}
+
+.leaflet-control-zoom-in {
+  position: relative !important;
+  &::before {
+    content: "";
+    width: calc(100% - 10px);
+    position: absolute;
+    left: 5px;
+    bottom: 0;
+    height: 1px;
+    background-color: #efefef;
+  }
+}

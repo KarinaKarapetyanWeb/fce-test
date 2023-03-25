@@ -1,0 +1,25 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  text-shadow: none;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px var(--primary-shadow);
+  }
+}
+
+.button svg {
+  flex-shrink: 0;
+}
